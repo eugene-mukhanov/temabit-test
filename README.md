@@ -101,8 +101,8 @@ These are the possible high risks of the transition architecture.
 A single API Gateway may introduce a single point of failure for the whole system.
 
 #### Did not have enough time
-Did not add deployment diagram
-Did not cover QA Security(:
+- Did not add deployment diagram
+- Did not cover QA Security(:
 
 
 ## Architecture Decision Records
