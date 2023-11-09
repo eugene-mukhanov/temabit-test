@@ -6,10 +6,10 @@
     - [Functional Requirements](#functional-requirements)
     - [Architecture Characteristics Requirements](#architecture-characteristics-requirements)
     - [Constraints](#constraints)
-    - [Concerns](#concerns)
-- [Baseline Architecture](#baseline-architecture)  
+    - [Concerns](#concerns) 
 - [Target Architecture](#target-architecture)  
 - [Architecture Decision Records](#architecture-decision-records)
+- [API Design](#api-design)
 
 **Business Drivers**
 
@@ -105,3 +105,66 @@ Second Law of Software Architecture*
  - [ADR-7](ADR/ADR-7-use-athena-for-reporting.md) Use AWS Athena to get analytics
  - [ADR-8](ADR/ADR-8-use-aws-cognito.md) Use AWS Cognito.
  - [ADR-9](ADR/ADR-9-requests-limiter.md) Request Limiter.
+
+## API Design
+Send Receipt:
+
+/receipts
+
+Request Method:
+
+POST
+
+Request Headers:
+
+    - Authorisation: Bearer {access_token}
+    - ProviderId: {providerId}
+
+Request Body:
+
+    {
+        "DateTime": 11-11-2023,
+        "ReceiptBody" : "jsnon or xml"
+    }
+
+Request Response:
+
+    {
+        "ReceiptId": GUID
+    }
+
+
+Get Receipt's Status:
+
+/receipts/{receipt_id}/status
+
+Request Method:
+
+GET
+
+Request Headers:
+
+    - Authorisation: Bearer {access_token}
+
+Request Response:
+
+    {
+        "ReceiptId": GUID,
+        "Status": "Created"
+    }
+
+
+/receipts/report?report_type={report_type}&params
+
+Request Method:
+
+GET
+
+Request Headers:
+
+    - Authorisation: Bearer {access_token}
+
+Request Response:
+
+    {        
+    }
