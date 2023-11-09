@@ -64,7 +64,7 @@ This section describes key stakeholders of the system and their architectural co
 * **QA-4**: **performance** (UC-2)
     - response time of analytics  < 30 sec;
 
-* **QA-5**: **performance** (UC-2)
+* **QA-5**: **sequrity** (UC-2)
     - only authorized user should have access to service
 
 ### Constraints
