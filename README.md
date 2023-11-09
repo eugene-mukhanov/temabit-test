@@ -9,9 +9,6 @@
     - [Concerns](#concerns)
 - [Baseline Architecture](#baseline-architecture)  
 - [Target Architecture](#target-architecture)  
-    - [Use Case Model](#use-case-model)  
-    - [System Context](#system-context)  
-    - [Containers](#containers)  
 - [Architecture Decision Records](#architecture-decision-records)
 
 **Business Drivers**
