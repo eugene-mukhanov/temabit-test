@@ -1,0 +1,13 @@
+## Title: 
+ADR-8: Use AWS Congnito
+
+## Status: 
+Proposed
+
+## Context: 
+Only authorised users and Receipt Providers should have access to our Service(QA-5)
+
+## Decision: 
+We could manage users and their logins by AWS Cognito. It can generate Access Token that will allow access to our API
+
+
