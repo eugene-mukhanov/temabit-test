@@ -6,13 +6,10 @@
     - [Functional Requirements](#functional-requirements)
     - [Architecture Characteristics Requirements](#architecture-characteristics-requirements)
     - [Constraints](#constraints)
-    - [Concerns](#concerns)
-- [Baseline Architecture](#baseline-architecture)  
+    - [Concerns](#concerns) 
 - [Target Architecture](#target-architecture)  
-    - [Use Case Model](#use-case-model)  
-    - [System Context](#system-context)  
-    - [Containers](#containers)  
 - [Architecture Decision Records](#architecture-decision-records)
+- [API Design](#api-design)
 
 **Business Drivers**
 
@@ -49,6 +46,9 @@ This section describes key stakeholders of the system and their architectural co
 * **UC-3**: **Get receipt status**:
     - manger what to check status of receipt at any time by REST API call (SH-1)
 
+* **UC-4**: **Request Limiter for Receipt Provider**:
+    - RP can not send more receipts per day than is in its Subscription Plans 
+
 ### Architecture Characteristics Requirements
 
 * **QA-1**: **scalability** (UC-1)
@@ -64,6 +64,9 @@ This section describes key stakeholders of the system and their architectural co
 * **QA-4**: **performance** (UC-2)
     - response time of analytics  < 30 sec;
 
+* **QA-5**: **sequrity** (UC-2)
+    - only authorized user should have access to service
+
 ### Constraints
 * **CON-1**: Integration with AWS. Serverless
 
@@ -76,22 +79,9 @@ This section describes key stakeholders of the system and their architectural co
 ## Target Architecture
 This section describes the target software architecture.
 
-Please note that all views are documented in [C4 model](https://c4model.com) style, although only System Context, Containe. The most diagrams use informal notation style. All diagrams are supplied with a key explaining meaning of each shape on the diagram.
-
-
-### System Context
-
-The system context diagram below depicted key users of the system and its external dependencies:
-
-![System Context](images/Temabit_Context.jpg "System Context")
-
-### Containers
-
-The containers diagram that follows shows the high-level shape of the software architecture and how responsibilities are distributed across containers. It also shows the major technology choices and how the containers communicate with one another.
-
 The architectural style used here as the bases is Serverless architecture (see [ADR-1](ADR/ADR-1-serverless.md) for details).
 
-![Containers](images/Temabit_Containers.jpg "Containers")
+![Containers](images/Receipts.png "Target Architecture")
 
 
 ### Risk Analysis
@@ -99,10 +89,6 @@ These are the possible high risks of the transition architecture.
 
 #### Availability
 A single API Gateway may introduce a single point of failure for the whole system.
-
-#### Did not have enough time
-- Did not add deployment and flow diagrams
-- Did not cover QA Security(:
 
 
 ## Architecture Decision Records
@@ -117,4 +103,68 @@ Second Law of Software Architecture*
  - [ADR-5](ADR/ADR-5-use-dynamodb.md) Use DynamoDb as Receipt Storage.
  - [ADR-6](ADR/ADR-6-use-s3-as-warehouse.md) Use S3 as data warehouse.
  - [ADR-7](ADR/ADR-7-use-athena-for-reporting.md) Use AWS Athena to get analytics
- - [ADR-8](ADR/ADR-8-synchronization-of-storages.md) Synchronization of storages.
+ - [ADR-8](ADR/ADR-8-use-aws-cognito.md) Use AWS Cognito.
+ - [ADR-9](ADR/ADR-9-requests-limiter.md) Request Limiter.
+
+## API Design
+Send Receipt:
+
+/receipts
+
+Request Method:
+
+POST
+
+Request Headers:
+
+    - Authorisation: Bearer {access_token}
+    - ProviderId: {providerId}
+
+Request Body:
+
+    {
+        "DateTime": 11-11-2023,
+        "ReceiptBody" : "jsnon or xml"
+    }
+
+Request Response:
+
+    {
+        "ReceiptId": GUID
+    }
+
+
+Get Receipt's Status:
+
+/receipts/{receipt_id}/status
+
+Request Method:
+
+GET
+
+Request Headers:
+
+    - Authorisation: Bearer {access_token}
+
+Request Response:
+
+    {
+        "ReceiptId": GUID,
+        "Status": "Created"
+    }
+
+
+/receipts/report?report_type={report_type}&params
+
+Request Method:
+
+GET
+
+Request Headers:
+
+    - Authorisation: Bearer {access_token}
+
+Request Response:
+
+    {        
+    }
