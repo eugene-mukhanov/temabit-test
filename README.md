@@ -103,4 +103,5 @@ Second Law of Software Architecture*
  - [ADR-5](ADR/ADR-5-use-dynamodb.md) Use DynamoDb as Receipt Storage.
  - [ADR-6](ADR/ADR-6-use-s3-as-warehouse.md) Use S3 as data warehouse.
  - [ADR-7](ADR/ADR-7-use-athena-for-reporting.md) Use AWS Athena to get analytics
- - [ADR-8](ADR/ADR-8-synchronization-of-storages.md) Synchronization of storages.
+ - [ADR-8](ADR/ADR-8-use-aws-cognito.md) Use AWS Cognito.
+ - [ADR-9](ADR/ADR-9-requests-limiter.md) Request Limiter.
