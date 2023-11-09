@@ -82,22 +82,9 @@ This section describes key stakeholders of the system and their architectural co
 ## Target Architecture
 This section describes the target software architecture.
 
-Please note that all views are documented in [C4 model](https://c4model.com) style, although only System Context, Containe. The most diagrams use informal notation style. All diagrams are supplied with a key explaining meaning of each shape on the diagram.
-
-
-### System Context
-
-The system context diagram below depicted key users of the system and its external dependencies:
-
-![System Context](images/Temabit_Context.jpg "System Context")
-
-### Containers
-
-The containers diagram that follows shows the high-level shape of the software architecture and how responsibilities are distributed across containers. It also shows the major technology choices and how the containers communicate with one another.
-
 The architectural style used here as the bases is Serverless architecture (see [ADR-1](ADR/ADR-1-serverless.md) for details).
 
-![Containers](images/Temabit_Containers.jpg "Containers")
+![Containers](images/Receipts.png "Target Architecture")
 
 
 ### Risk Analysis
@@ -105,10 +92,6 @@ These are the possible high risks of the transition architecture.
 
 #### Availability
 A single API Gateway may introduce a single point of failure for the whole system.
-
-#### Did not have enough time
-- Did not add deployment and flow diagrams
-- Did not cover QA Security(:
 
 
 ## Architecture Decision Records
