@@ -49,7 +49,7 @@ This section describes key stakeholders of the system and their architectural co
 * **UC-3**: **Get receipt status**:
     - manger what to check status of receipt at any time by REST API call (SH-1)
 
-* **UC-4**: **Subscription Plans for Receipt Provider**:
+* **UC-4**: **Request Limiter for Receipt Provider**:
     - RP can not send more receipts per day than is in its Subscription Plans 
 
 ### Architecture Characteristics Requirements
@@ -66,6 +66,9 @@ This section describes key stakeholders of the system and their architectural co
 
 * **QA-4**: **performance** (UC-2)
     - response time of analytics  < 30 sec;
+
+* **QA-5**: **performance** (UC-2)
+    - only authorized user should have access to service
 
 ### Constraints
 * **CON-1**: Integration with AWS. Serverless
