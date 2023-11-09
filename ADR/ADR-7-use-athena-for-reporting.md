@@ -12,4 +12,4 @@ The best way to get data from S3 is AWS Athena. We could use Redshift Sceptum bu
   
 ## Consequences: 
 
-* For best performance we need to use files in Parquet format and at least 128MB size
+* For best performance we need to use files in Parquet format and at least 128MB size. Data should store in different folders s3:/{data}/..
