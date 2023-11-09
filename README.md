@@ -49,6 +49,9 @@ This section describes key stakeholders of the system and their architectural co
 * **UC-3**: **Get receipt status**:
     - manger what to check status of receipt at any time by REST API call (SH-1)
 
+* **UC-4**: **Subscription Plans for Receipt Provider**:
+    - RP can not send more receipts per day than is in its Subscription Plans 
+
 ### Architecture Characteristics Requirements
 
 * **QA-1**: **scalability** (UC-1)
